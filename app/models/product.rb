@@ -7,7 +7,9 @@ class Product < ActiveRecord::Base
   end
 
   def print_all_reviews
-    puts "#{self.name} by #{User.find(Review.find_by(product_id: self.id).user_id).name}: #{Review.find_by(product_id: self.id).star_rating}. #{Review.find_by(product_id: self.id).comment}"
+
+    puts "#{self.name} by #{self.users[0].name}: #{self.reviews.find_by(product_id: self.id).star_rating}. #{self.reviews.find_by(product_id: self.id).comment}"
+  
     
   end
 
